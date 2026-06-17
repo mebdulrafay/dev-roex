@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hafiz Abdul Rafay — Embedded Systems &amp; AI-Assisted Developer</title>
+<meta name="description" content="Hafiz Abdul Rafay (dev_roex) — embedded systems developer, hardware innovator and AI-assisted developer based in Mianwali, Pakistan. Arduino, ESP32, Python, and web engineering.">
+<meta name="author" content="dev_roex">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome 6.4.0 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ LOADING OVERLAY ============ -->
+<div class="loader" id="loader">
+  <div class="loader__scope">
+    <svg class="loader__radar" viewBox="0 0 120 120" aria-hidden="true">
+      <circle class="loader__ring" cx="60" cy="60" r="46"></circle>
+      <circle class="loader__ring loader__ring--inner" cx="60" cy="60" r="28"></circle>
+      <line class="loader__crosshair" x1="60" y1="6" x2="60" y2="114"></line>
+      <line class="loader__crosshair" x1="6" y1="60" x2="114" y2="60"></line>
+      <path class="loader__sweep" d="M60 60 L60 14 A46 46 0 0 1 100.8 37 Z"></path>
+    </svg>
+  </div>
+  <p class="loader__label">INITIALIZING<span class="loader__dots">...</span></p>
+</div>
+
+<!-- ============ BACKGROUND GRID ============ -->
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href="#hero" class="navbar__logo" aria-label="HAR — home">
+      <span class="navbar__logo-mark">HAR</span>
+      <span class="navbar__logo-tag">dev_roex</span>
+    </a>
+
+    <nav class="navbar__links" id="navLinks">
+      <a href="#hero" class="navlink" data-navlink>Home</a>
+      <a href="#about" class="navlink" data-navlink>About</a>
+      <a href="#projects" class="navlink" data-navlink>Projects</a>
+      <a href="#services" class="navlink" data-navlink>Services</a>
+      <a href="#achievements" class="navlink" data-navlink>Achievements</a>
+      <a href="#contact" class="navlink" data-navlink>Contact</a>
+    </nav>
+
+    <a href="#contact" class="navbar__cta">Let's Build</a>
+
+    <button class="navbar__theme" id="themeToggle" aria-label="Toggle theme" aria-pressed="false">
+      <i id="themeIcon" class="fa-solid fa-moon" aria-hidden="true"></i>
+    </button>
+
+    <button class="navbar__burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="navbar__mobile" id="mobileMenu">
+    <a href="#hero" data-navlink>Home</a>
+    <a href="#about" data-navlink>About</a>
+    <a href="#projects" data-navlink>Projects</a>
+    <a href="#services" data-navlink>Services</a>
+    <a href="#achievements" data-navlink>Achievements</a>
+    <a href="#contact" data-navlink>Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ [1] HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__grid"></div>
+
+    <div class="hero__content">
+      <p class="eyebrow reveal-fade">
+        <span class="eyebrow__dot"></span> SYS://JAUHARABAD.PK &nbsp;·&nbsp; STATUS: ONLINE
+      </p>
+
+      <h1 class="hero__headline reveal-fade">Hi, I'm <span class="hero__name">Hafiz Abdul Rafay</span></h1>
+
+      <div class="hero__role reveal-fade">
+        <span class="hero__role-prefix">&gt;</span>
+        <span class="typewriter" id="typewriter"></span><span class="typewriter-cursor">_</span>
+      </div>
+
+      <p class="hero__desc reveal-fade">
+        Passionate about creating elegant solutions to complex problems. Specializing in embedded systems, web applications, and AI-assisted development.
+      </p>
+
+      <div class="hero__ctas reveal-fade">
+        <a href="#projects" class="btn btn--primary">
+          <span>View My Work</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="#contact" class="btn btn--ghost">
+          <span>Get In Touch</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__avatar-wrap reveal-scale">
+      <svg class="hero__radar-sweep" viewBox="0 0 400 400" aria-hidden="true">
+        <circle class="radar-ring" cx="200" cy="200" r="190"></circle>
+        <circle class="radar-ring" cx="200" cy="200" r="140"></circle>
+        <circle class="radar-ring" cx="200" cy="200" r="90"></circle>
+        <line class="radar-cross" x1="200" y1="10" x2="200" y2="390"></line>
+        <line class="radar-cross" x1="10" y1="200" x2="390" y2="200"></line>
+        <g class="radar-sweep-group">
+          <path d="M200 200 L200 10 A190 190 0 0 1 334 78 Z" class="radar-sweep-fill"></path>
+        </g>
+        <circle class="radar-blip" cx="120" cy="270" r="3"></circle>
+        <circle class="radar-blip radar-blip--delay" cx="290" cy="140" r="3"></circle>
+      </svg>
+      <div class="hero__avatar-frame">
+        <img src="assets/img/avatar.png" alt="Hafiz Abdul Rafay" class="hero__avatar-img">
+      </div>
+      <div class="hero__avatar-corner hero__avatar-corner--tl"></div>
+      <div class="hero__avatar-corner hero__avatar-corner--tr"></div>
+      <div class="hero__avatar-corner hero__avatar-corner--bl"></div>
+      <div class="hero__avatar-corner hero__avatar-corner--br"></div>
+    </div>
+
+    <a href="#about" class="hero__scroll-cue" aria-label="Scroll to about section">
+      <span>SCROLL</span>
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- ============ [2] ABOUT ============ -->
+  <section class="about" id="about">
+    <div class="section-head">
+      <p class="section-tag reveal-fade">[ 01 ] &nbsp;ABOUT</p>
+      <h2 class="section-title reveal-fade">Engineering at every layer of the stack</h2>
+    </div>
+
+    <div class="about__grid">
+      <div class="about__copy reveal-left">
+        <p>
+          I'm a dedicated developer who treats every build like a circuit: each part has a job, and the whole only works when the connections are precise. That mindset carries from soldering a sensor onto a breadboard to shipping a production-ready interface — I care about what happens underneath as much as what the user sees.
+        </p>
+        <p>
+          Based in Jauharabad, Pakistan, I split my time between hardware prototyping and software craft, using AI-assisted workflows to move faster without cutting corners. Whether it's an ESP32 reading the world in real time or a web app reading a user's intent, the goal is the same: turn a rough idea into something that runs reliably, looks deliberate, and holds up under load.
+        </p>
+
+        <div class="about__meta">
+          <div class="about__meta-item">
+            <span class="about__meta-label">LOCATION</span>
+            <span class="about__meta-value">Jauharabad, Pakistan</span>
+          </div>
+          <div class="about__meta-item">
+            <span class="about__meta-label">BUILDS IN PUBLIC</span>
+            <span class="about__meta-value">github.com/mebdulrafay</span>
+          </div>
+          <div class="about__meta-item">
+            <span class="about__meta-label">JOURNAL</span>
+            <span class="about__meta-value">@dev_roex</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about__skills reveal-right">
+        <div class="skill-card" data-tilt>
+          <span class="skill-card__corner"></span>
+          <i class="fa-solid fa-palette skill-card__icon"></i>
+          <span class="skill-card__name">Graphic Designer</span>
+        </div>
+        <div class="skill-card" data-tilt>
+          <span class="skill-card__corner"></span>
+          <i class="fa-solid fa-microchip skill-card__icon"></i>
+          <span class="skill-card__name">Arduino</span>
+        </div>
+        <div class="skill-card" data-tilt>
+          <span class="skill-card__corner"></span>
+          <i class="fa-brands fa-js skill-card__icon"></i>
+          <span class="skill-card__name">JavaScript</span>
+        </div>
+        <div class="skill-card" data-tilt>
+          <span class="skill-card__corner"></span>
+          <i class="fa-solid fa-robot skill-card__icon"></i>
+          <span class="skill-card__name">AI-Assisted Developer</span>
+        </div>
+        <div class="skill-card" data-tilt>
+          <span class="skill-card__corner"></span>
+          <i class="fa-brands fa-html5 skill-card__icon"></i>
+          <span class="skill-card__name">HTML5</span>
+        </div>
+        <div class="skill-card" data-tilt>
+          <span class="skill-card__corner"></span>
+          <i class="fa-brands fa-python skill-card__icon"></i>
+          <span class="skill-card__name">Python</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ [3] PROJECTS ============ -->
+  <section class="projects" id="projects">
+    <div class="section-head">
+      <p class="section-tag reveal-fade">[ 02 ] &nbsp;PROJECTS</p>
+      <h2 class="section-title reveal-fade">Selected builds, hardware to software</h2>
+    </div>
+
+    <div class="projects__grid">
+
+      <article class="project-card reveal-scale">
+        <span class="project-card__corner project-card__corner--tl"></span>
+        <span class="project-card__corner project-card__corner--br"></span>
+        <div class="project-card__media">
+          <img src="img/p1.png" alt="Radar System using Arduino">
+          <a href="https://github.com/mebdulrafay/RADAR-DECTECTION-USING-ARDUINO" target="_blank" rel="noopener" class="project-card__github" aria-label="View Radar System on GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Radar System using Arduino</h3>
+          <p class="project-card__desc">An ultrasonic-and-servo scanning radar that sweeps its surroundings and calls out detections through AI-generated voice alerts.</p>
+          <ul class="project-card__features">
+            <li><i class="fa-solid fa-check"></i> Ultrasonic distance scanning</li>
+            <li><i class="fa-solid fa-check"></i> Servo-driven 180° sweep</li>
+            <li><i class="fa-solid fa-check"></i> Real-time AI voice alerts</li>
+            <li><i class="fa-solid fa-check"></i> Live serial telemetry plot</li>
+          </ul>
+          <div class="project-card__tags">
+            <span class="tag">Servo.h</span>
+            <span class="tag">NewPing.h</span>
+            <span class="tag">SoftwareSerial.h</span>
+            <span class="tag">TTS.h</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal-scale">
+        <span class="project-card__corner project-card__corner--tl"></span>
+        <span class="project-card__corner project-card__corner--br"></span>
+        <div class="project-card__media">
+          <img src="img/p2.jpeg" alt="Weather Forecast Web App">
+          <a href="https://github.com/mebdulrafay/LiveWeatherApp" target="_blank" rel="noopener" class="project-card__github" aria-label="View Weather Forecast Web App on GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Weather Forecast Web App</h3>
+          <p class="project-card__desc">A real-time weather lookup app pulling live conditions and forecasts from a public weather API.</p>
+          <ul class="project-card__features">
+            <li><i class="fa-solid fa-check"></i> Live data via OpenWeather API</li>
+            <li><i class="fa-solid fa-check"></i> City search with instant results</li>
+            <li><i class="fa-solid fa-check"></i> Responsive, mobile-first layout</li>
+            <li><i class="fa-solid fa-check"></i> Dynamic condition-based UI</li>
+          </ul>
+          <div class="project-card__tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">OpenWeather API</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal-scale">
+        <span class="project-card__corner project-card__corner--tl"></span>
+        <span class="project-card__corner project-card__corner--br"></span>
+        <div class="project-card__media">
+          <img src="img/p3.png" alt="Personal Portfolio">
+          <a href="https://github.com/mebdulrafay/portfolio" target="_blank" rel="noopener" class="project-card__github" aria-label="View Personal Portfolio on GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Personal Portfolio</h3>
+          <p class="project-card__desc">A modern, interactive portfolio built to showcase projects and skills with clean, purposeful UI.</p>
+          <ul class="project-card__features">
+            <li><i class="fa-solid fa-check"></i> Modular, component-based layout</li>
+            <li><i class="fa-solid fa-check"></i> Smooth scroll navigation</li>
+            <li><i class="fa-solid fa-check"></i> Icon-driven skill presentation</li>
+            <li><i class="fa-solid fa-check"></i> Fully responsive design</li>
+          </ul>
+          <div class="project-card__tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">FontAwesome</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal-scale">
+        <span class="project-card__corner project-card__corner--tl"></span>
+        <span class="project-card__corner project-card__corner--br"></span>
+        <div class="project-card__media">
+          <img src="img/p4.jpeg" alt="Binary Converter App">
+          <a href="https://github.com/mebdulrafay/BINARY-APP" target="_blank" rel="noopener" class="project-card__github" aria-label="View Binary Converter App on GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Binary Converter App</h3>
+          <p class="project-card__desc">A PyQt5 desktop utility that converts text to binary and back, with one-click clipboard support.</p>
+          <ul class="project-card__features">
+            <li><i class="fa-solid fa-check"></i> Instant text ↔ binary conversion</li>
+            <li><i class="fa-solid fa-check"></i> One-click copy to clipboard</li>
+            <li><i class="fa-solid fa-check"></i> Native desktop GUI with PyQt5</li>
+            <li><i class="fa-solid fa-check"></i> Lightweight, single-file build</li>
+          </ul>
+          <div class="project-card__tags">
+            <span class="tag">Python</span>
+            <span class="tag">PyQt5</span>
+            <span class="tag">pyperclip</span>
+            <span class="tag">sys</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal-scale">
+        <span class="project-card__corner project-card__corner--tl"></span>
+        <span class="project-card__corner project-card__corner--br"></span>
+        <div class="project-card__media">
+          <img src="img/p5.jpeg" alt="Arduino PC Controlled Buzzer">
+          <a href="https://github.com/mebdulrafay/Arduino-Based-PC-Controlled-Buzzer" target="_blank" rel="noopener" class="project-card__github" aria-label="View Arduino PC Controlled Buzzer on GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Arduino PC Controlled Buzzer</h3>
+          <p class="project-card__desc">A serial-communication bridge that lets a PC trigger physical buzzer alerts on an Arduino in real time.</p>
+          <ul class="project-card__features">
+            <li><i class="fa-solid fa-check"></i> PC-to-board serial messaging</li>
+            <li><i class="fa-solid fa-check"></i> Processing-based control panel</li>
+            <li><i class="fa-solid fa-check"></i> Configurable alert patterns</li>
+            <li><i class="fa-solid fa-check"></i> Low-latency response</li>
+          </ul>
+          <div class="project-card__tags">
+            <span class="tag">Arduino C/C++</span>
+            <span class="tag">Processing</span>
+            <span class="tag">Arduino.h</span>
+            <span class="tag">Serial</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal-scale">
+        <span class="project-card__corner project-card__corner--tl"></span>
+        <span class="project-card__corner project-card__corner--br"></span>
+        <div class="project-card__media">
+          <img src="img/p6.png" alt="Interactive Portfolio v2">
+          <a href="https://github.com/mebdulrafay/PORTFOLIO-WEB" target="_blank" rel="noopener" class="project-card__github" aria-label="View Interactive Portfolio v2 on GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Interactive Portfolio v2</h3>
+          <p class="project-card__desc">A second-generation portfolio focused on a refined, modern interface and smoother interactions.</p>
+          <ul class="project-card__features">
+            <li><i class="fa-solid fa-check"></i> Refreshed visual system</li>
+            <li><i class="fa-solid fa-check"></i> Section-based scroll reveals</li>
+            <li><i class="fa-solid fa-check"></i> Accessible markup structure</li>
+            <li><i class="fa-solid fa-check"></i> Cross-device consistency</li>
+          </ul>
+          <div class="project-card__tags">
+            <span class="tag">HTML</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">CSS</span>
+            <span class="tag">FontAwesome</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ [4] SERVICES ============ -->
+  <section class="services" id="services">
+    <div class="section-head">
+      <p class="section-tag reveal-fade">[ 03 ] &nbsp;SERVICES</p>
+      <h2 class="section-title reveal-fade">Freelance, on three frequencies</h2>
+    </div>
+
+    <div class="services__grid">
+      <div class="service-card reveal-left">
+        <span class="service-card__corner"></span>
+        <div class="service-card__icon"><i class="fa-solid fa-palette"></i></div>
+        <h3 class="service-card__title">Graphic Designing</h3>
+        <p class="service-card__desc">Branding, social media creatives, and visual assets built to hold a consistent identity across every touchpoint.</p>
+      </div>
+      <div class="service-card reveal-fade">
+        <span class="service-card__corner"></span>
+        <div class="service-card__icon"><i class="fa-solid fa-robot"></i></div>
+        <h3 class="service-card__title">AI-Assisted Development</h3>
+        <p class="service-card__desc">Faster delivery on coding and automation work, using AI tooling to accelerate the build without skipping the engineering.</p>
+      </div>
+      <div class="service-card reveal-right">
+        <span class="service-card__corner"></span>
+        <div class="service-card__icon"><i class="fa-solid fa-microchip"></i></div>
+        <h3 class="service-card__title">Arduino Prototyping</h3>
+        <p class="service-card__desc">Embedded projects, sensor integration, and hardware prototypes taken from concept to working bench demo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ [5] ACHIEVEMENTS ============ -->
+  <section class="achievements" id="achievements">
+    <div class="section-head">
+      <p class="section-tag reveal-fade">[ 04 ] &nbsp;ACHIEVEMENTS</p>
+      <h2 class="section-title reveal-fade">Logged and verified</h2>
+    </div>
+
+    <div class="achievements__grid" id="achievementsGrid">
+
+      <div class="achievement-card reveal-fade">
+        <div class="achievement-card__media">
+          <img src="img/a1.jpg" alt="Science Expo 2025 award">
+          <span class="achievement-card__icon"><i class="fa-solid fa-trophy"></i></span>
+        </div>
+        <div class="achievement-card__body">
+          <h3 class="achievement-card__title">Science Expo 2025 — 2nd Position</h3>
+          <p class="achievement-card__desc">Level VI–VIII category, PAEC Education Center, Pakistan Atomic Energy Commission.</p>
+          <a href="https://drive.google.com/file/d/1PkrMi6nXr7YWCTl66jQifrTRIQleUpge" target="_blank" rel="noopener" class="achievement-card__verify">Verify <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+      <div class="achievement-card reveal-fade">
+        <div class="achievement-card__media">
+          <img src="img/a2.jpg" alt="Espressif hardware sponsorship">
+          <span class="achievement-card__icon"><i class="fa-solid fa-microchip"></i></span>
+        </div>
+        <div class="achievement-card__body">
+          <h3 class="achievement-card__title">Espressif Hardware Sponsorship</h3>
+          <p class="achievement-card__desc">Recognized by Espressif Systems for ESP32-S3 innovation in edge computing and IoT.</p>
+          <a href="https://drive.google.com/file/d/18WuV-U0Pl37E3Gu0WW0b02AQCvu-qXyu" target="_blank" rel="noopener" class="achievement-card__verify">Verify <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+      <div class="achievement-card reveal-fade">
+        <div class="achievement-card__media">
+          <img src="img/a3.jpg" alt="Data architecture and edge analytics work">
+          <span class="achievement-card__icon"><i class="fa-solid fa-database"></i></span>
+        </div>
+        <div class="achievement-card__body">
+          <h3 class="achievement-card__title">Data Architecture &amp; Edge Analytics</h3>
+          <p class="achievement-card__desc">Python and SQLite3 paired with embedded systems for secure, on-device data storage.</p>
+          <a href="https://drive.google.com/file/d/11grnAYlY_OkYpo09tU9Kj7BCr0rHhHf9" target="_blank" rel="noopener" class="achievement-card__verify">Verify <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+      <div class="achievement-card achievement-card--extra reveal-fade">
+        <div class="achievement-card__media">
+          <img src="img/a4.jpg" alt="HP LIFE certification">
+          <span class="achievement-card__icon"><i class="fa-solid fa-certificate"></i></span>
+        </div>
+        <div class="achievement-card__body">
+          <h3 class="achievement-card__title">AI &amp; Multi-Tech Proficiency</h3>
+          <p class="achievement-card__desc">HP LIFE certified, with applied proficiency across Python, JavaScript, and Arduino.</p>
+          <a href="https://drive.google.com/file/d/1D1ylFxDm0rQTafkbDycpd4g-Xg7QsSp2" target="_blank" rel="noopener" class="achievement-card__verify">Verify <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+      <div class="achievement-card achievement-card--extra reveal-fade">
+        <div class="achievement-card__media">
+          <img src="img/a5.jpg" alt="Continuous learning">
+          <span class="achievement-card__icon"><i class="fa-solid fa-book-open"></i></span>
+        </div>
+        <div class="achievement-card__body">
+          <h3 class="achievement-card__title">Continuous Learner</h3>
+          <p class="achievement-card__desc">Always updating with the latest tools and techniques across hardware and software.</p>
+          <a href="https://www.linkedin.com/in/hafiz-abdul-rafay-4577a5395" target="_blank" rel="noopener" class="achievement-card__verify">Verify <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+      <div class="achievement-card achievement-card--extra reveal-fade">
+        <div class="achievement-card__media">
+          <img src="img/a6.jpg" alt="Community engagement on GitHub">
+          <span class="achievement-card__icon"><i class="fa-brands fa-github"></i></span>
+        </div>
+        <div class="achievement-card__body">
+          <h3 class="achievement-card__title">Community Engagement</h3>
+          <p class="achievement-card__desc">Active GitHub contributor, building and sharing projects in the open.</p>
+          <a href="https://www.linkedin.com/in/hafiz-abdul-rafay-4577a5395" target="_blank" rel="noopener" class="achievement-card__verify">Verify <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="achievements__toggle" id="achievementsToggle">
+      <span>Show More</span>
+      <i class="fa-solid fa-chevron-down"></i>
+    </button>
+  </section>
+
+  <!-- ============ [6] CONTACT ============ -->
+  <section class="contact" id="contact">
+    <div class="section-head">
+      <p class="section-tag reveal-fade">[ 05 ] &nbsp;CONTACT</p>
+      <h2 class="section-title reveal-fade">Open a channel</h2>
+    </div>
+
+    <div class="contact__grid">
+      <form class="contact__form reveal-left" id="contactForm" action="https://formspree.io/f/mojqyaep" method="POST">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-row">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+        </div>
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell me about the project..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary contact__submit">
+          <span id="submitText">Send Message</span>
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+        <p class="contact__status" id="contactStatus" aria-live="polite"></p>
+      </form>
+
+      <div class="contact__info reveal-right">
+        <div class="contact__info-item">
+          <i class="fa-solid fa-envelope"></i>
+          <div>
+            <span class="contact__info-label">Email</span>
+            <a href="mailto:mebdulrafay@gmail.com">mebdulrafay@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact__info-item">
+          <i class="fa-solid fa-phone"></i>
+          <div>
+            <span class="contact__info-label">Phone</span>
+            <a href="tel:000012345678">0000 12345678</a>
+          </div>
+        </div>
+        <div class="contact__info-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <div>
+            <span class="contact__info-label">Location</span>
+            <span>Mianwali, Pakistan</span>
+          </div>
+        </div>
+
+        <div class="contact__socials">
+          <a href="https://www.linkedin.com/in/hafiz-abdul-rafay-4577a5395" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://github.com/mebdulrafay" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ [7] FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <span class="footer__logo">HAR</span>
+      <span class="footer__alias">dev_roex</span>
+    </div>
+
+    <div class="footer__socials">
+      <a href="https://www.linkedin.com/in/hafiz-abdul-rafay-4577a5395" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="https://github.com/mebdulrafay" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    </div>
+
+    <!-- footer navigation removed per request; footer retains grey blurred background only -->
+
+    <p class="footer__made">Made with passion by Hafiz Abdul Rafay</p>
+    <p class="footer__copyright">© 2024 All rights reserved to Hafiz Abdul Rafay and more</p>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script src="script.js"></script>
+</body>
+</html>
