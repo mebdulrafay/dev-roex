@@ -920,13 +920,21 @@ main, .navbar, .footer { position: relative; z-index: 1; }
 .contact__socials { display: flex; gap: 12px; margin-top: 8px; }
 
 .contact__socials a {
-  width: 44px; height: 44px;
+  width: 44px; 
+  height: 44px;
   border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
   border: 1px solid var(--border-strong);
   background: var(--surface);
   backdrop-filter: blur(var(--blur));
-  transition: border-color 0.3s var(--ease), background 0.3s var(--ease), transform 0.3s var(--ease);
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease), transform 0.4s var(--ease);
+} /* Yeh bracket yahan close hoga */
+
+.contact__socials a i.fa-instagram {
+  font-weight: 900;
+}
 }
 
 .contact__socials a:hover { border-color: var(--cyan); background: var(--surface-hover); transform: translateY(-3px); }
